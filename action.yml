@@ -1,5 +1,5 @@
-name: 'Run DScanner with reviewdog'
-description: '🐶 Run DScanner with reviewdog on pull requests to improve code review experience.'
+name: 'Run D-Scanner with reviewdog'
+description: '🐶 Run D-Scanner with reviewdog on pull requests to improve code review experience.'
 author: 'Samuel El-Borai'
 inputs:
   github_token:
@@ -12,9 +12,9 @@ inputs:
     default: 'error'
   reporter:
     description: 'Reporter of reviewdog command [github-pr-check,github-pr-review]'
-    default: 'github-pr-check'
+    default: 'github-pr-review'
 
-  ### Flags for DScanner ###
+  ### Flags for D-Scanner ###
 
 
 runs:
