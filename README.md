@@ -1,6 +1,5 @@
 # action-template
 
-<!-- TODO: replace dgellow/action-dscanner with your repo name -->
 [![Test](https://github.com/dgellow/action-dscanner/workflows/Test/badge.svg)](https://github.com/dgellow/action-dscanner/actions?query=workflow%3ATest)
 [![reviewdog](https://github.com/dgellow/action-dscanner/workflows/reviewdog/badge.svg)](https://github.com/dgellow/action-dscanner/actions?query=workflow%3Areviewdog)
 [![depup](https://github.com/dgellow/action-dscanner/workflows/depup/badge.svg)](https://github.com/dgellow/action-dscanner/actions?query=workflow%3Adepup)
@@ -13,7 +12,6 @@
 
 ## Input
 
-<!-- TODO: update -->
 ```yaml
 inputs:
   github_token:
@@ -26,22 +24,16 @@ inputs:
   reporter:
     description: 'Reporter of reviewdog command [github-pr-check,github-check,github-pr-review].'
     default: 'github-pr-check'
-  ### Flags for <linter-name> ###
-  locale:
-    description: '-locale flag of misspell. (US/UK)'
-    default: ''
 ```
 
 ## Usage
-<!-- TODO: update. replace `template` with the linter name -->
 
 ```yaml
 name: reviewdog
 on: [pull_request]
 jobs:
-  # TODO: change `linter_name`.
   linter_name:
-    name: runner / <linter-name>
+    name: runner / dscanner
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
