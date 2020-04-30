@@ -15,9 +15,7 @@ inputs:
     default: 'github-pr-check'
 
   ### Flags for DScanner ###
-  locale:
-    description: 'List of arguments to send to DScanner'
-    default: ''
+
 
 runs:
   using: 'docker'
