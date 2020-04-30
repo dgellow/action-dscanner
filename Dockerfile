@@ -6,6 +6,9 @@ RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/in
 
 FROM dlang2/dmd-ubuntu:2.091.1
 
+RUN apt-get update && apt-get install -y git \
+	&& rm -rf /var/lib/apt/lists/*
+
 COPY --from=reviewdog /usr/local/bin/reviewdog /usr/local/bin/reviewdog
 COPY entrypoint.sh /entrypoint.sh
 
