@@ -15,7 +15,9 @@ inputs:
     default: 'github-pr-review'
 
   ### Flags for D-Scanner ###
-
+  path:
+    description: 'Root directory where D-Scanner should be run from'
+    default: ''
 
 runs:
   using: 'docker'
