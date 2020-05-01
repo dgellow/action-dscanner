@@ -7,6 +7,8 @@ fi
 
 if [ -n "${INPUT_PATH}" ]; then
   cd "${INPUT_PATH}" || exit
+else
+  echo "INPUT_PATH not set"
 fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
