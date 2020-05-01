@@ -7,4 +7,5 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+# shellcheck disable=SC2086
 dub lint --root="${INPUT_PATH:-PWD}" ${INPUT_DUB_FLAGS} -- ${INPUT_FLAGS} | reviewdog -efm="%f(%l:%c)[%tarn]: %m" -efm="%f(%l:%c)[%trror]: %m" -name="dscanner" -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}"
