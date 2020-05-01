@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        env:
+          GITHUB_WORKSPACE: ./testdata
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
@@ -23,6 +25,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        env:
+          GITHUB_WORKSPACE: ./testdata
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
@@ -35,6 +39,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        env:
+          GITHUB_WORKSPACE: ./testdata
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
