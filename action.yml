@@ -1,6 +1,6 @@
-name: 'Run D-Scanner with reviewdog'
+name: 'Run D-Scanner (D language linter) with reviewdog'
 description: '🐶 Run D-Scanner with reviewdog on pull requests to improve code review experience.'
-author: 'Samuel El-Borai'
+author: 'dgellow'
 inputs:
   github_token:
     description: 'GITHUB_TOKEN'
