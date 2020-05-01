@@ -22,16 +22,28 @@ inputs:
   github_token:
     description: 'GITHUB_TOKEN'
     default: '${{ github.token }}'
-  # reviewdog flags
+
+  ### Flags for reviewdog ###
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
   reporter:
-    description: 'Reporter of reviewdog command [github-pr-check,github-check,github-pr-review].'
-    default: 'github-pr-check'
-  # D-Scanner flags
+    description: 'Reporter of reviewdog command [github-pr-check,github-pr-review]'
+    default: 'github-pr-review'
+
+  ### Flags for D-Scanner ###
   path:
     description: 'Root directory where D-Scanner should be run from'
+    default: ''
+  flags:
+    description: |
+      List of arguments to pass to D-Scanner.
+      Exemple: '--config path/to/dscanner.ini'
+    default: ''
+  dub_flags:
+    description: |
+      List of arguments to pass to dub.
+      Exemple: '--config path/to/dub.json'
     default: ''
 ```
 
@@ -55,5 +67,5 @@ jobs:
           level: warning
 
           # D-Scanner config
-          path: 'path/to/my/project'
+          path: 'path/to/my/dub/project'
 ```
