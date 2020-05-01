@@ -1,4 +1,4 @@
-# action-template
+# action-dscanner
 
 [![Test](https://github.com/dgellow/action-dscanner/workflows/Test/badge.svg)](https://github.com/dgellow/action-dscanner/actions?query=workflow%3ATest)
 [![reviewdog](https://github.com/dgellow/action-dscanner/workflows/reviewdog/badge.svg)](https://github.com/dgellow/action-dscanner/actions?query=workflow%3Areviewdog)
@@ -7,6 +7,12 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dgellow/action-dscanner?logo=github&sort=semver)](https://github.com/dgellow/action-dscanner/releases)
 [![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
 
+This [Github Action](https://help.github.com/en/actions) runs [D-Scanner](https://github.com/dlang-community/D-Scanner) on your project and report its result in your Pull Requests via [reviewdog](https://github.com/reviewdog/reviewdog).
+
+D-Scanner is run via a call to `dub lint`, thus a [DUB](https://dub.pm/) project is expected.
+
+![screenshot example of a reviewdog comment in pull request](assets/sample_dropshadow.png)
+
 ## Input
 
 ```yaml
@@ -14,13 +20,17 @@ inputs:
   github_token:
     description: 'GITHUB_TOKEN'
     default: '${{ github.token }}'
-  ### Flags for reviewdog ###
+  # reviewdog flags
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
   reporter:
     description: 'Reporter of reviewdog command [github-pr-check,github-check,github-pr-review].'
     default: 'github-pr-check'
+  # D-Scanner flags
+  path:
+    description: 'Root directory where D-Scanner should be run from'
+    default: ''
 ```
 
 ## Usage
@@ -37,42 +47,11 @@ jobs:
       - uses: dgellow/action-dscanner@v1
         with:
           github_token: ${{ secrets.github_token }}
-          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
+
+          # reviewdog config
           reporter: github-pr-review
-          # Change reporter level if you need.
-          # GitHub Status Check won't become failure with warning.
           level: warning
+
+          # D-Scanner config
+          path: 'path/to/my/project'
 ```
-
-## Development
-
-### Release
-
-#### [haya14busa/action-bumpr](https://github.com/haya14busa/action-bumpr)
-You can bump version on merging Pull Requests with specific labels (bump:major,bump:minor,bump:patch).
-Pushing tag manually by yourself also work.
-
-#### [haya14busa/action-update-semver](https://github.com/haya14busa/action-update-semver)
-
-This action updates major/minor release tags on a tag push. e.g. Update v1 and v1.2 tag when released v1.2.3.
-ref: https://help.github.com/en/articles/about-actions#versioning-your-action
-
-### Lint - reviewdog integration
-
-This reviewdog action template itself is integrated with reviewdog to run lints
-which is useful for Docker container based actions.
-
-![reviewdog integration](https://user-images.githubusercontent.com/3797062/72735107-7fbb9600-3bde-11ea-8087-12af76e7ee6f.png)
-
-Supported linters:
-
-- [reviewdog/action-shellcheck](https://github.com/reviewdog/action-shellcheck)
-- [reviewdog/action-hadolint](https://github.com/reviewdog/action-hadolint)
-- [reviewdog/action-misspell](https://github.com/reviewdog/action-misspell)
-
-### Dependencies Update Automation
-This repository uses [haya14busa/action-depup](https://github.com/haya14busa/action-depup) to update
-reviewdog version.
-
-[![reviewdog depup demo](https://user-images.githubusercontent.com/3797062/73154254-170e7500-411a-11ea-8211-912e9de7c936.png)](https://github.com/dgellow/action-dscanner/pull/6)
-
