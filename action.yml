@@ -21,12 +21,12 @@ inputs:
   flags:
     description: |
       List of arguments to pass to D-Scanner.
-      Example: '--config path/to/dscanner.ini'
+      Example: '--config=path/to/dscanner.ini'
     default: ''
   dub_flags:
     description: |
       List of arguments to pass to dub.
-      Example: '--config path/to/dub.json'
+      Example: '--config=path/to/dub.json'
     default: ''
 
 runs:

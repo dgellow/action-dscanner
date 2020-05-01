@@ -16,8 +16,8 @@ jobs:
           reporter: github-check
           level: info
           path: ./testdata
-          flags: '--config ./testdata/dscanner.ini'
-          dub_flags: '--config ./testdata/dub.sdl'
+          flags: '--config=./testdata/dscanner.ini'
+          dub_flags: '--config=./testdata/dub.sdl'
 
   test-pr-check:
     if: github.event_name == 'pull_request'
@@ -31,8 +31,8 @@ jobs:
           reporter: github-pr-check
           level: error
           path: ./testdata
-          flags: '--config ./testdata/dscanner.ini'
-          dub_flags: '--config ./testdata/dub.sdl'
+          flags: '--config=./testdata/dscanner.ini'
+          dub_flags: '--config=./testdata/dub.sdl'
 
   test-pr-review:
     if: github.event_name == 'pull_request'
@@ -46,5 +46,5 @@ jobs:
           reporter: github-pr-review
           level: error
           path: ./testdata
-          flags: '--config ./testdata/dscanner.ini'
-          dub_flags: '--config ./testdata/dub.sdl'
+          flags: '--config=./testdata/dscanner.ini'
+          dub_flags: '--config=./testdata/dub.sdl'
