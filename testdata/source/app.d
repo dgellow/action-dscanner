@@ -1,9 +1,9 @@
 import std.stdio;
 
-// Issue: Prefer the new "'alias' identifier '=' type ';'" syntax to the  old "'alias' type identifier ';'" syntax.
+// Warning: Prefer the new "'alias' identifier '=' type ';'" syntax to the  old "'alias' type identifier ';'" syntax.
 alias string myString;
 
-// Issue: Empty declaration
+// Warning: Empty declaration
 ;
 
 void main(string[] args)
@@ -12,8 +12,11 @@ void main(string[] args)
 	{
 		writeln("Hello World");
 	}
-	// Issue: Catching Error or Throwable is almost always a bad idea.
+	// Warning: Catching Error or Throwable is almost always a bad idea.
 	catch (Throwable)
 	{
 	}
+
+	// Error: Expected `)` instead of `;`
+	writeln("hmm, you should have close that one";
 }
