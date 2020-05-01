@@ -11,7 +11,9 @@ This [Github Action](https://help.github.com/en/actions) runs [D-Scanner](https:
 
 D-Scanner is run via a call to `dub lint`, thus a [DUB](https://dub.pm/) project is expected.
 
-![screenshot example of a reviewdog comment in pull request](assets/sample_dropshadow.png)
+<p align="center">
+  <img src="assets/sample_dropshadow.png">
+</p>
 
 ## Input
 
